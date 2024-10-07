@@ -1,0 +1,75 @@
+**Introduction:
+The  Application is a fully-backend application for a food delivery platform focusing solely on backend operations.
+
+**Features:
+
+*User Authentication & Authorization:
+1.Secure user registration and login using JWT.
+
+*Order Management:
+1.Users can place new food orders.
+2.Update and track orders in real time.
+3.View order history for individual users.
+
+*Restaurant & Menu Management:
+1.Display a list of available restaurants.
+2.Restaurants include detailed menu items with descriptions and prices.
+
+*Real-Time Order Status Tracking:
+1.Real-time updates on order status (e.g., Pending, Confirmed, Delivered) using Socket.io.
+
+*Error Handling:
+1.Comprehensive error handling for invalid requests, authentication issues, and internal server errors.
+
+**Technologies Used:
+1.Node.js: JavaScript runtime for building the server.
+2.Express.js: Framework for building the REST API.
+3.MongoDB: NoSQL database for storing user, restaurant, menu, and order information.
+4.Mongoose: ODM library to interact with MongoDB.
+5.JWT: Authentication and authorization using JSON Web Tokens.
+6.Socket.io: Real-time bidirectional communication for order status updates.
+
+**APIs
+User Management
+POST - /api/auth/register - Registers a new user in the system.
+POST - /api/auth/login - Authenticates a user and returns a JWT.
+PUT - /api/auth/profile - Updates User profile information.
+
+Restaurant and Menu Management
+POST - /api/ - Create a new restaurant data.
+PUT - /api/:restaurantId - Updates the restaurant details.
+POST - /api/:restaurantId/menu - Add menu items to the restaurant's menu.
+PUT - /api/:restaurantId/menu/:itemId - Updates a specific menu item.
+
+Order Management
+POST - /api/orders - Place a new order.
+PUT - /api/orders/:orderId/status - update order status
+GET - /api/orders/:orderId/ - Get details of a specific order by ID
+GET - /api/orders - Get a;; orders for the logged-in user, here need to use token.
+
+Real-Time-order Tracking(used Socket.io)
+GET - /api/orders/:orderId/track - Track order status
+
+
+**Setup and Installation
+1.Node.js: Ensure you have Node.js installed on your machine.
+2.MongoDB: I used MongoDB Atlas connection.
+3.Postman: for testing API endpoints.
+4.Socket.io: using real-time updates, ensure it is properly configured.
+
+**Environment Variables
+used environment variables in a .env file:
+JWT_SECRET: A secret key for signing JWT tokens.
+MONGO_URI: MongoDB connection URI.
+
+
+**Error Handling
+404 Error: If a user requests a non-existent order or resource, a 404 error is returned.
+500 Error: In case of any server issues, a generic 500 error with a relevant message is provided.
+
+
+
+
+
+
+
