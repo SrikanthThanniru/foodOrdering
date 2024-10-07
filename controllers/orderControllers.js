@@ -18,8 +18,6 @@ const placeOrder = async (req, res) => {
       return res.status(400).json({ message: 'Invalid user or restaurant' });
     }
 
-    // console.log('Restaurant:', restaurant); // Log the entire restaurant object
-
     // Calculate total cost from menu items
     let totalCost = 0;
     const orderItems = [];
@@ -30,8 +28,6 @@ const placeOrder = async (req, res) => {
       if (!menuItem) {
         return res.status(400).json({ message: 'Invalid menu item' });
       }
-
-      // console.log('Menu item found:', menuItem); // Log the menu item found
 
       // Ensure item.quantity is a number and greater than 0
       const quantity = Number(item.quantity);
@@ -46,8 +42,6 @@ const placeOrder = async (req, res) => {
       totalCost += menuItem.price * quantity;
       orderItems.push({ menuItemId: item.menuItemId, quantity, price: menuItem.price });
     }
-
-    // console.log('Total cost calculated:', totalCost); 
 
     // Validate that totalCost is a valid number
     if (isNaN(totalCost) || totalCost < 0) {
@@ -157,17 +151,13 @@ const getOrderById = async (req, res) => {
 // Get all orders for the logged-in user
 const getOrders = async (req, res) => {
   try {
-    console.log('req.user:', req.user)
     const userId = req.user.userId; //  user authentication middleware adds the user object to the request
 
     const orders = await Order.find({ userId });
-    console.log('User ID:', userId);
-
-
+    
     if (!orders || orders.length === 0) {
       return res.status(404).json({ message: 'No orders found for this user' });
     }
-    console.log("orders", orders)
     res.status(200).json(orders);
   } catch (err) {
     console.error('Error fetching orders:', err);
