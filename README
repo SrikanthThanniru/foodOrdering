@@ -67,7 +67,10 @@ MONGO_URI: MongoDB connection URI.
 404 Error: If a user requests a non-existent order or resource, a 404 error is returned.
 500 Error: In case of any server issues, a generic 500 error with a relevant message is provided.
 
-
+**Testing and Validation
+All the API endpoints, including user registration, login, restaurant fetching, order placement, and order tracking, have been built and tested using Postman.
+The API requests work perfectly without any errors, and the responses are returned as per the requirements.
+Real-time features, such as order status tracking via Socket.io, are also functioning.
 
 
 
